@@ -1,8 +1,56 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#10151d"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon.svg"><title>Hockey Freunde Manager</title>
-<style>
-:root{--bg:#0a1019;--gold:#f5c928;--muted:#aab5c4;--line:#ffffff26}*{box-sizing:border-box}body{margin:0;color:#f7f8fb;font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 15% 0%,#35445b,transparent 40%),linear-gradient(145deg,#0b111b,#151d2a 55%,#080d15);min-height:100vh}header{padding:calc(18px + env(safe-area-inset-top)) 18px 12px;max-width:900px;margin:auto;font-weight:900;letter-spacing:.14em}header span{display:block;color:var(--gold);font-size:11px}main{max-width:900px;margin:auto;padding:12px 14px 100px}.glass{background:linear-gradient(135deg,#ffffff20,#ffffff08);border:1px solid var(--line);box-shadow:inset 0 1px 0 #ffffff25,0 18px 45px #0005;backdrop-filter:blur(24px);border-radius:22px;padding:18px;margin-bottom:13px}h1{font-size:27px;margin:3px 0 8px}h2{font-size:18px;margin:0 0 13px}.muted,.small{color:var(--muted)}.small{font-size:12px}.gold{color:var(--gold);font-weight:800}button,select,input{font:inherit;color:inherit;border:1px solid var(--line);background:#ffffff12;border-radius:12px;padding:10px}button{cursor:pointer;font-weight:650}button.primary{background:linear-gradient(135deg,#ffe47a,#e6b900);color:#171717;border:0}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}.stat{font-size:25px;color:var(--gold);font-weight:800}.player{display:flex;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid #ffffff15}.grow{flex:1}.chip{display:inline-block;padding:8px 10px;background:#ffffff12;border-radius:11px;margin:3px}.line{padding:12px;background:#ffffff0b;border:1px solid #ffffff19;border-radius:16px;margin:9px 0}label{display:block;color:var(--muted);font-size:12px;margin:10px 0 5px}input[type=text],input[type=number],select{width:100%}nav{position:fixed;bottom:calc(10px + env(safe-area-inset-bottom));left:10px;right:10px;max-width:650px;margin:auto;z-index:3;display:flex;justify-content:space-around;padding:8px;border-radius:22px;background:#18202ccc;border:1px solid #ffffff30;backdrop-filter:blur(25px)}nav button{border:0;background:none;font-size:11px;color:#abb6c7;padding:7px}nav button.active{color:var(--gold)}.hidden{display:none!important}.notice{color:#f5dfa0;font-size:12px}
-</style></head><body><header>HOCKEY FREUNDE<span>MANAGER · EFM TEAM TOOL</span></header><main id="app"></main><nav><button data-tab="home">⌂ Home</button><button data-tab="players">♙ Players</button><button data-tab="builder">⌗ Lines</button><button data-tab="history">◷ History</button></nav>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06101f"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon.svg"><title>Hockey Freunde Manager</title>
+<style>:root{--gold:#ffd84d;--ice:#9fe3ff;--muted:#c9d6e6;--txt:#f6f9ff;--glass:rgba(255,255,255,.07);--rim:rgba(255,255,255,.22);--blur:blur(28px) saturate(190%)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:#06101f}
+body{margin:0;color:var(--txt);font:15px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;min-height:100vh;background:transparent}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;background:
+radial-gradient(38% 30% at 18% 12%,#2a7fd4cc,transparent 70%),
+radial-gradient(30% 26% at 88% 22%,#ffcf3a80,transparent 70%),
+radial-gradient(36% 32% at 70% 78%,#7a4dff88,transparent 70%),
+radial-gradient(34% 30% at 10% 82%,#19c7d6aa,transparent 70%),
+linear-gradient(160deg,#071a33,#0b1630 50%,#050b18);filter:blur(10px)}
+header{padding:calc(20px + env(safe-area-inset-top)) 20px 10px;max-width:900px;margin:auto;font-weight:800;letter-spacing:.08em;font-size:17px;text-shadow:0 1px 12px #0006}
+header span{display:block;color:var(--ice);font-size:11px;font-weight:600;letter-spacing:.1em;opacity:.85;margin-top:2px}
+main{max-width:900px;margin:auto;padding:10px 14px 110px}
+.glass,nav,.line,button,select,input[type=text],input[type=number],.chip{position:relative;background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--rim)}
+.glass{border-radius:30px;padding:20px;margin-bottom:14px;background:linear-gradient(140deg,rgba(255,255,255,.13),rgba(255,255,255,.03) 45%,rgba(255,255,255,.06));box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 -1px 0 rgba(255,255,255,.08),inset 1px 0 0 rgba(255,255,255,.12),0 20px 50px -18px rgba(0,0,0,.55);overflow:hidden}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(120% 60% at 0% 0%,rgba(255,255,255,.22),transparent 45%),radial-gradient(80% 40% at 100% 100%,rgba(159,227,255,.10),transparent 60%)}
+.glass>*{position:relative}
+h1{font-size:30px;line-height:1.1;margin:4px 0 10px;letter-spacing:-.01em}
+h2{font-size:18px;margin:0 0 12px}
+.muted,.small{color:var(--muted)}.small{font-size:12px}
+.gold{color:var(--gold);font-weight:800;text-shadow:0 0 14px #ffd84d55}
+button,select,input{font:inherit;color:inherit;border-radius:999px;padding:10px 16px}
+button{cursor:pointer;font-weight:600;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.05));box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 6px 18px -8px rgba(0,0,0,.5);transition:transform .12s,background .2s}
+button:active{transform:scale(.96);background:rgba(255,255,255,.22)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--ice);outline-offset:2px}
+button.primary{color:#1d1600;border-color:rgba(255,236,150,.7);background:linear-gradient(180deg,rgba(255,232,120,.92),rgba(240,190,20,.78));box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 10px 26px -10px #ffcf3aaa}
+select{border-radius:18px;-webkit-appearance:none;appearance:none}
+select option{color:#0b1630}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-top:6px}
+.grid>div{padding:12px 14px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.stat{font-size:28px;color:var(--gold);font-weight:800;text-shadow:0 0 18px #ffd84d44}
+.player{display:flex;gap:10px;align-items:center;padding:10px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+.player:last-child{border-bottom:0}
+.grow{flex:1}
+.chip{display:inline-block;padding:7px 12px;border-radius:999px;margin:3px;font-size:14px;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05));box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+.line{padding:13px 14px;border-radius:22px;margin:10px 0;background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.line>b{display:block;margin-bottom:4px}
+input[type=checkbox]{-webkit-appearance:none;appearance:none;width:46px;height:28px;padding:0;flex:none;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid var(--rim);position:relative;cursor:pointer;transition:background .2s}
+input[type=checkbox]::after{content:"";position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:linear-gradient(180deg,#fff,#dfe8f5);box-shadow:0 2px 6px rgba(0,0,0,.35);transition:transform .2s}
+input[type=checkbox]:checked{background:rgba(159,227,255,.55);border-color:rgba(159,227,255,.8)}
+input[type=checkbox]:checked::after{transform:translateX(18px)}
+label{display:block;color:var(--muted);font-size:12px;margin:12px 0 6px}
+input[type=text],input[type=number],select{width:100%}
+nav{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom));left:12px;right:12px;max-width:520px;margin:auto;z-index:3;display:flex;justify-content:space-around;padding:6px;border-radius:999px;background:rgba(16,28,50,.5);-webkit-backdrop-filter:blur(30px) saturate(200%);backdrop-filter:blur(30px) saturate(200%);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 18px 40px -12px rgba(0,0,0,.6)}
+nav button{border:0;background:none;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;font-size:12px;color:#d3deec;padding:9px 14px}
+nav button.active{color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.08));box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
+.hidden{display:none!important}.notice{color:#ffe9a6;font-size:12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass,nav{background:rgba(20,32,54,.85)}}
+</style></head><body><header>HOCKEY FREUNDE<span>MANAGER · EFM TEAM TOOL · v1.2</span></header><main id="app"></main><nav><button data-tab="home">⌂ Home</button><button data-tab="players">♙ Players</button><button data-tab="builder">⌗ Lines</button><button data-tab="history">◷ History</button></nav>
 <script>
 const roster=[
 ["Aaron",9,"D","RW/LW"],["Andre",4,"D","RW/LW"],["Denis",4,"RW/LW",""],["Flo B",7,"RW/LW",""],["Jonas",7,"RW/LW","Center"],["Dominik",7,"LW/RW","D"],["Raphi",7,"RW","Center"],["Flo F",6,"RW/LW","Center"],["Karl",6,"D","D"],["Hias",null,"D",""],["Johannes",7,"Center","RW/LW"],["Maxi",7,"RW/LW","RW/LW"],["Bene",null,"Goalie","Goalie"],["Martina",null,"Goalie","Goalie"],["Carlo",7,"Forward","D"],["Lucas",6,"D","RW/LW"],["Leo",9,"Forward","Center/Defense"],["Mario",6,"RW/LW","Center"],["Michi P",6,"Forward",""],["Florens",7,"D",""],["Luca",9,"D","Forward"],["Guggi",5,"D","RW/LW"],["Morty",3,"Forward",""],["Tim",null,"D","RW/LW"],["Max",7,"D","RW/LW"],["Volker",8,"D","Center"],["Luis",4,"Center","RW/LW"],["Michi W",10,"Forward","RW/LW"],["Oli",8,"Center","RW/LW"],["Femke",4,"Forward",""],["Mischa",null,"Forward",""],["Gilbert",9,"Forward",""]
